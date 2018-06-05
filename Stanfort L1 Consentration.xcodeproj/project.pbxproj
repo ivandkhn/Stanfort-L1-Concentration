@@ -54,14 +54,22 @@
 		993F3A1620C6F2B200CA4294 /* Stanfort L1 Consentration */ = {
 			isa = PBXGroup;
 			children = (
-				993F3A1720C6F2B200CA4294 /* AppDelegate.swift */,
+				993F3A2920C6F30400CA4294 /* Supporting files */,
 				993F3A1920C6F2B200CA4294 /* ViewController.swift */,
 				993F3A1B20C6F2B200CA4294 /* Main.storyboard */,
-				993F3A1E20C6F2B800CA4294 /* Assets.xcassets */,
-				993F3A2020C6F2B800CA4294 /* LaunchScreen.storyboard */,
 				993F3A2320C6F2B800CA4294 /* Info.plist */,
 			);
 			path = "Stanfort L1 Consentration";
+			sourceTree = "<group>";
+		};
+		993F3A2920C6F30400CA4294 /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				993F3A1720C6F2B200CA4294 /* AppDelegate.swift */,
+				993F3A1E20C6F2B800CA4294 /* Assets.xcassets */,
+				993F3A2020C6F2B800CA4294 /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
