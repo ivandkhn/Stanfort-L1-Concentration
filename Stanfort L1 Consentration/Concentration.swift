@@ -40,6 +40,10 @@ class Concentration {
             let card = Card()
             cards += [card, card]
         }
-        //TODO: Shuffle the cards (HW)
+        for _ in 1...numberOfPairsOfCards*2 {
+            let i = Int(arc4random_uniform(UInt32(numberOfPairsOfCards*2)))
+            let j = Int(arc4random_uniform(UInt32(numberOfPairsOfCards*2)))
+            cards.swapAt(i, j)
+        }
     }
 }
