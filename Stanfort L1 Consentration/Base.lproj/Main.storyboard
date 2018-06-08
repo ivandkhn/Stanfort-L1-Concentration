@@ -141,12 +141,20 @@
                                     <action selector="newGameButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Olt-EP-Ksa"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eow-Fx-RF3">
+                                <rect key="frame" x="16" y="444" width="175" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <color key="textColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="flipCountLabel" destination="S7e-Bb-qHW" id="YRN-he-CjV"/>
+                        <outlet property="scoreLabel" destination="eow-Fx-RF3" id="1at-hk-p2S"/>
                         <outletCollection property="cardButtons" destination="fBU-6z-4bQ" collectionClass="NSMutableArray" id="pUM-kd-q4Z"/>
                         <outletCollection property="cardButtons" destination="KVg-hb-lBB" collectionClass="NSMutableArray" id="E7q-Id-gim"/>
                         <outletCollection property="cardButtons" destination="eut-dM-cD2" collectionClass="NSMutableArray" id="FJk-De-Vxk"/>

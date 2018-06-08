@@ -10,29 +10,19 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    //lazy - dont init until it's used
     lazy var game = Concentration(numberOfPairsOfCards: (cardButtons.count + 1) / 2)
-    
-    var flipCount = 0 {
-        //invoked when variable changes (property observer)
-        didSet {
-            flipCountLabel.text = "Flips: \(flipCount)"
-        }
-    }
     
     @IBOutlet weak var flipCountLabel: UILabel!
     @IBOutlet var cardButtons: [UIButton]!
-    
+    @IBOutlet weak var scoreLabel: UILabel!
     
     @IBAction func newGameButtonPressed(_ sender: UIButton) {
         game = Concentration(numberOfPairsOfCards: (cardButtons.count + 1) / 2)
-        selectedTheme = 0
-        flipCount = 0
+        selectedTheme = -1
         updateViewFromModel()
     }
     
     @IBAction func touchCard(_ sender: UIButton) {
-        flipCount += 1
         if let cardNumber = cardButtons.index(of: sender) {
             game.chooseCard(at: cardNumber)
             updateViewFromModel()
@@ -40,9 +30,10 @@ class ViewController: UIViewController {
             print("card isn't in cardButtons")
         }
     }
-    
     func updateViewFromModel() {
-        for index in cardButtons.indices { // = 0..<cardButtons.count
+        flipCountLabel.text = "Flips: \(game.flipCount)"
+        scoreLabel.text = "Score: \(game.score)"
+        for index in cardButtons.indices {
             let button = cardButtons[index]
             let card = game.cards[index]
             if card.isFaceUp {
@@ -58,16 +49,15 @@ class ViewController: UIViewController {
     let emojiThemes = [["😀", "😂", "😇", "😍", "😋", "😎", "😱"],
                        ["🐶", "🐱", "🐭", "🐹", "🐰", "🦊", "🐻"],
                        ["💟", "☮️", "✝️", "☪️", "🕉", "☸️", "🕎"]]
-    var selectedTheme = 0
+    var selectedTheme = -1
     var emojiChoices = Array<String>()
     var emoji = [Int:String]()
     
     func emoji(for card: Card) -> String {
-        if selectedTheme == 0 {
+        if selectedTheme == -1 {
             selectedTheme = Int(arc4random_uniform(UInt32(emojiThemes.count)))
             emojiChoices = emojiThemes[selectedTheme]
         }
-        
         if emoji[card.identifier] == nil, emojiChoices.count > 0 {
             let randomIndex = Int(arc4random_uniform(UInt32(emojiChoices.count)))
             emoji[card.identifier] = emojiChoices.remove(at: randomIndex)
