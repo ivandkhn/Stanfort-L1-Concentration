@@ -10,13 +10,33 @@ import Foundation
 
 class Concentration {
     
-    var cards = [Card]()
+    private(set) var cards = [Card]()
     var score = 0
     var flipCount = 0
-    var indexOfOneAndOnlyFaceUpCard: Int?
+    private var indexOfOneAndOnlyFaceUpCard: Int? {
+        get {
+            var foundIndex: Int?
+            for index in cards.indices {
+                if cards[index].isFaceUp {
+                    if foundIndex == nil {
+                        foundIndex = index
+                    } else {
+                        return nil
+                    }
+                }
+            }
+            return foundIndex
+        }
+        set (newValue) {
+            for index in cards.indices {
+                cards[index].isFaceUp = (index == newValue)
+            }
+        }
+    }
     var time = Date()
     
     func chooseCard(at index: Int) {
+        assert(cards.indices.contains(index), "Concentration.chooseCard at \(index)")
         let newTime = Date()
         // we assume that the perfect time for one move is 1 second
         score += 1 - Int(newTime.timeIntervalSince(time))
@@ -40,7 +60,6 @@ class Concentration {
                     cards[index].wasInvolvedInMismatch = true
                 }
                 cards[index].isFaceUp = true
-                indexOfOneAndOnlyFaceUpCard = nil
             } else {
                 // either no cards or 2 cards are face up
                 for flipDownIndex in cards.indices {
