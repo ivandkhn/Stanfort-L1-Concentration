@@ -14,8 +14,13 @@ class Concentration {
     var score = 0
     var flipCount = 0
     var indexOfOneAndOnlyFaceUpCard: Int?
+    var time = Date()
     
     func chooseCard(at index: Int) {
+        let newTime = Date()
+        // we assume that the perfect time for one move is 1 second
+        score += 1 - Int(newTime.timeIntervalSince(time))
+        time = newTime
         flipCount += 1
         if !cards[index].isMatched {
             if let matchIndex = indexOfOneAndOnlyFaceUpCard, matchIndex != index {

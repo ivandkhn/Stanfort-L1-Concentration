@@ -153,6 +153,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="backgroundViewController" destination="8bC-Xf-vdC" id="jXM-ve-zUk"/>
                         <outlet property="flipCountLabel" destination="S7e-Bb-qHW" id="YRN-he-CjV"/>
                         <outlet property="scoreLabel" destination="eow-Fx-RF3" id="1at-hk-p2S"/>
                         <outletCollection property="cardButtons" destination="fBU-6z-4bQ" collectionClass="NSMutableArray" id="pUM-kd-q4Z"/>
