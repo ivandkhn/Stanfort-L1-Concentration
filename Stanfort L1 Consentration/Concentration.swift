@@ -9,7 +9,6 @@
 import Foundation
 
 class Concentration {
-    
     private(set) var cards = [Card]()
     var score = 0
     var flipCount = 0
@@ -36,7 +35,7 @@ class Concentration {
     var time = Date()
     
     func chooseCard(at index: Int) {
-        assert(cards.indices.contains(index), "Concentration.chooseCard at \(index)")
+        assert(cards.indices.contains(index), "Concentration.chooseCard(\(index))")
         let newTime = Date()
         // we assume that the perfect time for one move is 1 second
         score += 1 - Int(newTime.timeIntervalSince(time))
@@ -45,7 +44,7 @@ class Concentration {
         if !cards[index].isMatched {
             if let matchIndex = indexOfOneAndOnlyFaceUpCard, matchIndex != index {
                 // check if cards match
-                if cards[matchIndex].identifier == cards[index].identifier {
+                if cards[matchIndex] == cards[index] {
                     cards[matchIndex].isMatched = true
                     cards[index].isMatched = true
                     score += 2
@@ -77,8 +76,8 @@ class Concentration {
             cards += [card, card]
         }
         for _ in 1...numberOfPairsOfCards*2 {
-            let i = Int(arc4random_uniform(UInt32(numberOfPairsOfCards*2)))
-            let j = Int(arc4random_uniform(UInt32(numberOfPairsOfCards*2)))
+            let i = (numberOfPairsOfCards*2).arc4random
+            let j = (numberOfPairsOfCards*2).arc4random
             cards.swapAt(i, j)
         }
     }
